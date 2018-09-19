@@ -1,5 +1,5 @@
 {
-  "name": "oxidtools",
+  "name": "oxid-cli",
   "version": "1.0.0",
   "description": "Oxid eShop Tools",
   "main": "index.js",
