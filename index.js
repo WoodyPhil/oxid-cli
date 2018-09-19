@@ -1,10 +1,17 @@
 #!/usr/bin/env node
+"use strict";
+
 const chalk = require("chalk");
 const clear = require("clear");
 const figlet = require("figlet");
-const minimist = require("minimist");
+const program = require("commander");
+const { version, description } = require("./package.json");
 
-const error = require("./lib/error");
+// import function to list coffeee menu
+const list = require("./lib/list");
+
+// import function to order a coffee
+const order = require("./lib/order");
 
 const init = () => {
   clear();
@@ -19,39 +26,49 @@ const init = () => {
   );
 };
 
-const args = minimist(process.argv.slice(2));
+// Print commands or help
+// $ oxid -v
+// $ oxid --version
+program
+  .name("oxid")
+  .version(`v${version}`, "-v, --version")
+  .description(description);
 
-let cmd = args._[0] || "help";
+// Print coffee drinks menu
+// $ oxid list
+// $ oxid ls
+program
+  .command("list") // sub-command name
+  .alias("-ls") // alternative sub-command is `ls`
+  .description("List coffee menu") // command description
 
-if (args.version || args.v) {
-  cmd = "version";
-}
+  // function to execute when command is uses
+  .action(function() {
+    list();
+  });
 
-if (args.help || args.h) {
-  cmd = "help";
-}
+// Order a coffee
+// $ oxid order
+// $ oxid o
+program
+  .command("order") // sub-command name
+  .alias("o") // alternative sub-command is `o`
+  .description("Order a coffee") // command description
+
+  // function to execute when command is uses
+  .action(function() {
+    order();
+  });
 
 const run = async () => {
   // show script introduction
   init();
 
-  switch (cmd) {
-    case "module":
-      require("./cmd/module")(args);
-      break;
+  // run program with arguments
+  program.parse(process.argv);
 
-    case "version":
-      require("./cmd/version")(args);
-      break;
-
-    case "help":
-      require("./cmd/help")(args);
-      break;
-
-    default:
-      error(`"${cmd}" is not a valid command!`, true);
-      break;
-  }
+  // if program was called with no arguments, show help.
+  if (!program.args.length) program.help();
 };
 
 run();

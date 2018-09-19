@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="ISO-8859-15"?>
+<OX>
+    <OXMENU id="oxps_modules_group">
+        <MAINMENU id="oxps_adminsample_sample" rights="malladmin">
+            <SUBMENU id="oxps_adminsample_menu" cl="admindemo" rights="malladmin" disableForDemoShop="0" />
+        </MAINMENU>
+    </OXMENU>
+</OX>

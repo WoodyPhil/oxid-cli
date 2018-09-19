@@ -1,0 +1,23 @@
+{
+  "name": "oxid-professional-services/demo",
+  "description": "OXID demo module",
+  "type": "oxideshop-module",
+  "keywords": ["oxid", "modules", "eShop"],
+  "homepage": "https://www.oxid-esales.com",
+  "license": ["GPL-3.0", "proprietary"],
+  "extra": {
+    "oxideshop": {
+      "target-directory": "oxps/demo"
+    }
+  },
+  "version": "1.0.0",
+  "require": {
+    "php": ">=7.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "OxidProfessionalServices\\DemoModule\\": "../../../source/modules/oxps/demo"
+    }
+  }
+}
+
