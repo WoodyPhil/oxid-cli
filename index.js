@@ -7,11 +7,8 @@ const figlet = require("figlet");
 const program = require("commander");
 const { version, description } = require("./package.json");
 
-// import function to list coffeee menu
-const list = require("./lib/list");
-
-// import function to order a coffee
-const order = require("./lib/order");
+// import functions
+const { list, order, create } = require("./lib");
 
 const init = () => {
   clear();
@@ -39,7 +36,7 @@ program
 // $ oxid ls
 program
   .command("list") // sub-command name
-  .alias("-ls") // alternative sub-command is `ls`
+  .alias("ls") // alternative sub-command is `ls`
   .description("List coffee menu") // command description
 
   // function to execute when command is uses
@@ -58,6 +55,19 @@ program
   // function to execute when command is uses
   .action(function() {
     order();
+  });
+
+// New Oxid boilerplate
+// $ oxid new
+// $ oxid create
+program
+  .command("new") // sub-command name
+  .alias("create") // alternative sub-command is `create`
+  .description("New oxid boilerplate") // command description
+
+  // function to execute when command is uses
+  .action(function() {
+    create();
   });
 
 const run = async () => {
