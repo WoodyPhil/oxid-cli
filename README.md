@@ -16,11 +16,6 @@ yarn global add oxid-cli
 * Share your templates via npm or keep them private inside your application.
 * No copy & paste of existing modules, stop doing repeating tasks, enjoy developing stuff instead.
 
-## Node API Features
-
-* Stop re-writing everything from scratch when writing your own `create-*-app` CLI.
-* Highly flexible API based upon Promises.
-
 ## Documentation
 
 * [Introduction](/docs/introduction/README.md)
